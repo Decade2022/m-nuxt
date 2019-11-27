@@ -34,6 +34,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    '~assets/css/base.css'
   ],
 
   /*
@@ -46,8 +47,12 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/style-resources',
   ],
-
+  styleResources: {
+    scss: './assets/variables.scss',
+    // sass: ...
+  },
   /*
   ** Build configuration
   */
