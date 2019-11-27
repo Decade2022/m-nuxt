@@ -1,5 +1,7 @@
 <template>
   <section class="container">
+    <header>
+    </header>
     <div>
       <logo />
     </div>
