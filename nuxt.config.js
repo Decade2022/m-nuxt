@@ -11,11 +11,17 @@ module.exports = {
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
+      { hid: 'description', name: 'description', content: pkg.description },
+      { 'http-equiv': 'X-UA-Compatible', content: 'ie=edge' },
+      { 'http-equiv': 'Cache-Control', content: 'no-cache' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js' },
+      { src: 'http://res.wx.qq.com/open/js/jweixin-1.4.0.js' }
     ]
   },
 
@@ -54,6 +60,12 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    vendor: ['axios'],
+    postcss: [
+      require('postcss-px2rem')({
+        remUnit: 75
+      })
+    ],
     extend(config, ctx) {
     }
   }
