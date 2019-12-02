@@ -16,7 +16,9 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
+html{
+    font-size: calc(100vw / 375 * 100);
+  }
 *,
 *:before,
 *:after {

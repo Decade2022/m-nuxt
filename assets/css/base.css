@@ -4,8 +4,8 @@ ol, ul { list-style-type: none; list-style-image: none }
 a { text-decoration: none }
 a:active { background-color: transparent }
 a:active, a:hover,a:focus { outline: 0 none }
-html { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; text-size-adjust: 100%; font-size: 62.5% }
-body { font-size: 26px; line-height: 1.8 ;color: #332e2e}
+html { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; text-size-adjust: 100%; font-size: 62.5%}
+body { font-size: 16px; line-height: 1.8 ;color: #332e2e}
 body, button, input, select, textarea { font-family: 'helvetica neue', arial, 'hiragino sans gb', stheiti, 'wenquanyi micro hei', \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, sans-serif; -ms-text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis; text-spacing: ideograph-alpha ideograph-numeric ideograph-parenthesis }
 h1, h2, h3, h4, h5, h6 { font-weight: 400 }
 h1 { font-size: 36px }

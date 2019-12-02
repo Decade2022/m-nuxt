@@ -20,7 +20,6 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
-      { src: 'http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js' },
       { src: 'http://res.wx.qq.com/open/js/jweixin-1.4.0.js' }
     ]
   },
@@ -49,6 +48,9 @@ module.exports = {
   modules: [
     '@nuxtjs/style-resources',
   ],
+  axios: {
+    prefix: 'https://test-api.rongcat.com'
+  },
   styleResources: {
     scss: './assets/variables.scss',
     // sass: ...
@@ -61,12 +63,12 @@ module.exports = {
     ** You can extend webpack config here
     */
     vendor: ['axios'],
-    postcss: [
-      require('postcss-px2rem')({
-        remUnit: 75
-      })
-    ],
-    extend(config, ctx) {
+    // postcss: [
+    //   require('postcss-px2rem')({
+    //     remUnit: 75
+    //   })
+    // ],
+    extend (config, ctx) {
     }
   }
 }
