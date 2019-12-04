@@ -1,12 +1,6 @@
 const pkg = require('./package')
-
-
 module.exports = {
-  mode: 'spa',
-
-  /*
-  ** Headers of the page
-  */
+  mode: 'universal',
   head: {
     title: pkg.name,
     meta: [
@@ -23,28 +17,15 @@ module.exports = {
       { src: 'http://res.wx.qq.com/open/js/jweixin-1.4.0.js' }
     ]
   },
-
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#fff' },
-
-  /*
-  ** Global CSS
-  */
   css: [
-    '~assets/css/base.css'
+    '~assets/css/base.css',
+    { src: "swiper/dist/css/swiper.css" }
   ],
-
-  /*
-  ** Plugins to load before mounting the App
-  */
   plugins: [
+    // { src: '~plugins/lodash.js', ssr: false }
+    { src: "~/plugins/vue-swiper.js", ssr: false }
   ],
-
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
     '@nuxtjs/style-resources',
   ],
@@ -55,19 +36,7 @@ module.exports = {
     scss: './assets/variables.scss',
     // sass: ...
   },
-  /*
-  ** Build configuration
-  */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
-    vendor: ['axios'],
-    // postcss: [
-    //   require('postcss-px2rem')({
-    //     remUnit: 75
-    //   })
-    // ],
     extend (config, ctx) {
     }
   }

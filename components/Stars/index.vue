@@ -1,85 +1,66 @@
 <template>
   <div>
-    <template>
-      <div class="star">
-        <span v-for="(item,index) in itemClasslass"
-              class="star-item"
-              :key="index"
-              :class="item"></span>
+    <div class="star_container">
+      <div v-for="(item,index) in array"
+           :key="index">
+        <div v-if="value- 1 >= index"
+             class="star_item">
+          <img :style="{width:'0.14rem',height:'0.14rem',marginBottom:'0.05rem'}"
+               src="img/start_white.png" />
+        </div>
+        <div v-else-if="value - index >0"
+             :style="{width:'0.14rem',height:'0.14rem',marginRight:'0.03rem',borderRadius:'0.01rem',overflow:'hidden'}">
+          <div :style="{width:'0.14rem',height:'0.14rem',flexDirection:'row',position:'absolute'}">
+            <div :style="{width:if_background,height:'0.14rem',backgroundColor:'#FF2E4D',position:'absolute',zIndex:'999', borderBottomLeftRadius:'0.02rem',borderTopLeftRadius:'0.02rem'}">
+              <img :style="{width:'0.14rem',height:'0.14rem',marginBottom:'0.05rem'}"
+                   src="img/start_white.png" />
+            </div>
+            <div :style="{width:'0.14rem',height:'0.14rem',backgroundColor:'#B3B3BB',position:'absolute',borderRadius: '0.02rem'}"></div>
+          </div>
+        </div>
+        <div v-else
+             :style="{width:'0.14rem',height:'0.14rem',backgroundColor:'#B3B3BB',marginRight:'0.06rem',borderRadius:'0.02rem'}">
+          <img :style="{width:'0.14rem',height:'0.14rem',marginBottom:'0.05rem'}"
+               src="img/start_white.png" />
+        </div>
       </div>
-    </template>
+    </div>
   </div>
 </template>
 
 <script>
-const lengths = 5;
-const starOn = 'on';
-const starHalf = 'half';
-const starOff = 'off';
-
-export default ({
-  data () {
-    return {
-
+export default {
+  props: {
+    value: Number,
+    value: {
+      default: 5
     }
   },
-  props: {
-    score: {//分数
-      type: Number,
-      default: function () {
-        return 5
-      }
+  data () {
+    return {
+      array: [0, 1, 2, 3, 4],
+      if_background: null
     }
   },
   created () {
+    this.if_background = (0.014 * (this.$props.value.toString().split('.')[1] != undefined ? this.value.toString().split('.')[1] : '')) + 'rem'
   },
-  computed: {
-    itemClasslass () {//星星的数组
-      let result = [];
-      let score = Math.floor(this.score * 2) / 2; //例如：把分数处理成在4.5以上及4.5就变成向上取整5，在4.5以下就变成4.5
-
-
-      //是否需要半星
-      let starhalf = score % 1 != 0 ? true : false;
-
-      //几颗全星
-      let fullstar = Math.floor(score);
-      for (var i = 0; i < fullstar; i++) {//放全星
-        result.push(starOn);
-      }
-      if (starhalf) {//放半星
-        result.push(starHalf)
-      }
-      if (result.length < lengths) {//如果没有满到五个星就用灰色的星星补齐9
-        var offstar = lengths - result.length;
-        for (var i = 0; i < offstar; i++) {
-          result.push(starOff);
-        }
-      };
-      return result;
-    }
-  }
-})
+}
 </script>
-<style scoped  lang="stylus">
-.star
-  .star-item
-    display inline-block
-    background-repeat no-repeat
-    width 20px
-    height 20px
-    margin-right 22px
-    background-size 20px 20px
-    &:last-child
-      margin-right 0
-    &.on
-      bg-image('on')
-      /* 这个是在公用的stylus中的方法：
-      　　bg-image($url)
-      　　　　background-image url("../../assets/images/" + $url + "@2x.png")
-      */
-    &.half
-      bg-image('half')
-    &.off
-      bg-image('off')
+<style scoped>
+.star_container {
+  display: flex;
+  align-items: center;
+}
+.star_item {
+  display: flex;
+  background-color: #ff2e4d;
+  margin-right: 0.06rem;
+  border-radius: 0.02rem;
+  width: 0.14rem;
+  height: 0.14rem;
+}
+.star_item image {
+  margin: auto;
+}
 </style>

@@ -59,7 +59,7 @@ export default {
         }
       } else {
         this.child = null
-        this.$emit('childByValue', i.name)
+        this.$emit('childByValue', { value: i.name, isfalse: false })
       }
     },
     biz_area (i) {
@@ -67,7 +67,7 @@ export default {
       if (i.child) {
         this.city = i.child
       } else {
-        this.$emit('childByValue', i.id ? i.id : i.name)
+        this.$emit('childByValue', i.id ? { value: i.id, isfalse: false } : { value: i.name, isfalse: false })
       }
     }
   }
@@ -76,11 +76,12 @@ export default {
 <style scoped lang='scss'>
 .wrap {
   width: 100%;
-  // height: 13.34rem;
+  height: 6.39rem;
   display: flex;
 }
 .left {
   overflow: scroll;
+  height: 6.39rem;
   &::-webkit-scrollbar {
     display: none;
   }
